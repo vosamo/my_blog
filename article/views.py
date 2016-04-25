@@ -3,7 +3,8 @@ from django.http import HttpResponse
 from .models import Article
 
 def home(request):
-    return HttpResponse("Hello,Django!")
+    post_list = Article.objects.all()
+    return render(request, 'home.html', {'post_list': post_list})
 
 def detail(request, my_args):
     post = Article.objects.all()[int(my_args)]
